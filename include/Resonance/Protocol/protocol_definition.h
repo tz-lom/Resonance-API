@@ -1,3 +1,13 @@
+#ifdef THIR_NAMESPACE
+#  undef THIR_NAMESPACE
+#endif
+#define THIR_NAMESPACE (Resonance)(R3)(Thir)
+#ifdef THIR_EXTENSIONS
+#  undef THIR_EXTENSIONS
+#endif
+#define THIR_EXTENSIONS (Qt)
+
+
 #define PROTOCOL_DESCR \
     RECORD(JSON_Object, \
         VECTOR_ANY(keys) \
@@ -6,16 +16,16 @@
     RECORD(JSON_Array, \
         VECTOR_ANY(values) \
     )\
-    RECORD(JSON_Null, _VOID() ) \
+    RECORD(JSON_Null, EMPTY() ) \
     RECORD(JSON_Number, FIELD(value, double) ) \
     RECORD(JSON_Bool, FIELD(value, bool) ) \
     RECORD(JSON_String, STRING(value) ) \
     \
-    RECORD(ConnectionHeader_EventBus, _VOID() )\
+    RECORD(ConnectionHeader_EventBus, EMPTY() )\
     \
     RECORD(EventBus_Description,\
-        FIELD(created, u64) \
-        FIELD(received, u64) \
+        FIELD(created, uint64_t) \
+        FIELD(received, uint64_t) \
         STRING(uid) \
         VECTOR_ANY(streams) \
         ANY(parameters)\
@@ -33,81 +43,81 @@
     \
     \
     RECORD(EventBus_DescribeRequest,\
-        FIELD(created, u64) \
-        FIELD(received, u64) \
+        FIELD(created, uint64_t) \
+        FIELD(received, uint64_t) \
     )\
 \
     RECORD(EventBus_ApplyParameters, \
-        FIELD(created, u64) \
-        FIELD(received, u64) \
+        FIELD(created, uint64_t) \
+        FIELD(received, uint64_t) \
         ANY(parameters)\
     )\
     \
     RECORD(EventBus_Transition, \
-        FIELD(created, u64) \
-        FIELD(received, u64) \
+        FIELD(created, uint64_t) \
+        FIELD(received, uint64_t) \
         STRING(name) \
     )\
     \
-    RECORD(ConnectionHeader_Message, _VOID() )\
+    RECORD(ConnectionHeader_Message, EMPTY() )\
     \
     RECORD(Message, \
-        FIELD(created, u64) \
-        FIELD(received, u64) \
+        FIELD(created, uint64_t) \
+        FIELD(received, uint64_t) \
         STRING(message) \
     )\
     RECORD(File_Stream, \
-        FIELD(id, u16) \
+        FIELD(id, uint16_t) \
         STRING(name) \
         ANY(info) \
     )\
     \
     RECORD(File_DataBlock, \
-        FIELD(stream, u16) \
+        FIELD(stream, uint16_t) \
         ANY(block) \
     )\
     \
     RECORD(FileHeader, \
-        FIELD(versionMajor, u16) \
-        FIELD(versionMinor, u16) \
+        FIELD(versionMajor, uint16_t) \
+        FIELD(versionMinor, uint16_t) \
         FIELD(packed, bool) \
-        FIELD(timestamp, u64) \
+        FIELD(timestamp, uint64_t) \
     )\
     \
     RECORD( Float64, \
-        FIELD(created, u64) \
-        FIELD(received, u64) \
-        FIELD(samples, u32) \
-        VECTOR(data, f64) \
+        FIELD(created, uint64_t) \
+        FIELD(received, uint64_t) \
+        FIELD(samples, uint32_t) \
+        VECTOR(data, double) \
     ) \
     \
     RECORD(ConnectionHeader_Int32, \
-        FIELD(channels, u32) \
-        FIELD(samplingRate, f64) \
-        FIELD(multiplier, f64) \
+        FIELD(channels, uint32_t) \
+        FIELD(samplingRate, double) \
+        FIELD(multiplier, double) \
     )\
     RECORD( Int32, \
-        FIELD(created, u64) \
-        FIELD(received, u64) \
-        FIELD(samples, u32) \
-        VECTOR(data, i32) \
+        FIELD(created, uint64_t) \
+        FIELD(received, uint64_t) \
+        FIELD(samples, uint32_t) \
+        VECTOR(data, int32_t) \
     ) \
  \
     RECORD(ConnectionHeader_Int64, \
-        FIELD(channels, u32) \
-        FIELD(samplingRate, f64) \
-        FIELD(multiplier, f64) \
+        FIELD(channels, uint32_t) \
+        FIELD(samplingRate, double) \
+        FIELD(multiplier, double) \
     )\
     \
     RECORD(ConnectionHeader_Float64, \
-        FIELD(channels, u32) \
-        FIELD(samplingRate, f64) \
+        FIELD(channels, uint32_t) \
+        FIELD(samplingRate, double) \
     )\
     RECORD(Int64, \
-        FIELD(created, u64) \
-        FIELD(received, u64) \
-        FIELD(samples, u32) \
-        VECTOR(data, i64) \
+        FIELD(created, uint64_t) \
+        FIELD(received, uint64_t) \
+        FIELD(samples, uint32_t) \
+        VECTOR(data, int64_t) \
     )\
     RECORD(ConnectionHeaderContainer, \
         STRING(name) \
@@ -115,14 +125,14 @@
         ANY(type) \
     )\
     RECORD(FileStreamSourceInfo, \
-        FIELD(stream, u16) \
+        FIELD(stream, uint16_t) \
         STRING(name) \
         STRING(uid) \
         VECTOR_ANY(urls) \
-        FIELD(timestamp, u64) \
+        FIELD(timestamp, uint64_t) \
     )\
     RECORD(FileStreamTerminated, \
-        FIELD(stream, u16) \
-        FIELD(timestamp, u64) \
+        FIELD(stream, uint16_t) \
+        FIELD(timestamp, uint64_t) \
     )
 

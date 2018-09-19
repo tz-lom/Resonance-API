@@ -9,7 +9,7 @@ class RESONANCE_API ResonanceTransition: public QSignalTransition
 {
     Q_OBJECT
 public:
-    ResonanceTransition(QString name, QState *sourceState = Q_NULLPTR);
+    ResonanceTransition(QString name, QState *sourceState);
 
     QString name();
 

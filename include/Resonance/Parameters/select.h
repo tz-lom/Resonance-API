@@ -22,8 +22,8 @@ public:
 
     QStringList options();
 
-    bool setJSON(QJsonValue value);
-    QJsonValue JSON();
+    bool setJSON(QJsonValue value) override;
+    QJsonValue JSON() override;
 
     QJsonValue JSONattributes() override;
 

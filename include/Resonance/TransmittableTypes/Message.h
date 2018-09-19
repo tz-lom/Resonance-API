@@ -9,14 +9,14 @@ class RESONANCE_API Message: public TransmittableType {
 public:
     Message();
 
-    R3::SerializedData *asConnectionHeader();
+    SD asConnectionHeader();
 
     quint16 typeId() const;
     static quint16 staticTypeId();
 
-    void updateReceivedTime(R3::SerializedData *data, quint64 now);
-    bool checkConnectionHeader(R3::SerializedData *header);
-    static TransmittableType* construct(const R3::SerializedData &header);
+    void updateReceivedTime(SD data, quint64 now);
+    bool checkConnectionHeader(SD header);
+    static TransmittableType* construct(const SD &header);
 
     DataBlock createMessage(QString text, quint64 time = 0);
     QString message(const DataBlock &block) const;

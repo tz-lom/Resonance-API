@@ -2,20 +2,23 @@
 
 #include "common.h"
 #include "streaminfo.h"
-#include <QSharedPointer>
+#include <memory>
 
 
 namespace Resonance {
-
 namespace R3 {
+namespace Thir {
 class SerializedData;
 }
+typedef ::std::shared_ptr<SerializedData> SD;
+}
+
 
 class RESONANCE_API DataBlock
 {
 public:
     DataBlock();
-    DataBlock(R3::SerializedData *data);
+    DataBlock(std::shared_ptr<R3::Thir::SerializedData> data);
     DataBlock(const DataBlock &block);
     DataBlock &operator=(const DataBlock &block);
 
@@ -23,7 +26,7 @@ public:
     void setInfo(StreamInfo info);
 
     bool isNull() const;
-    R3::SerializedData* serialized() const;
+    std::shared_ptr<R3::Thir::SerializedData> serialized() const;
 
     template<class T>
     inline T* type() const
@@ -38,10 +41,8 @@ private:
     friend class RecorderThread;
     friend class Recorder;
 
-    QSharedPointer<R3::SerializedData> data;
+    std::shared_ptr<R3::Thir::SerializedData> data;
     StreamInfo m_info;
-
-    DataBlock(QSharedPointer<R3::SerializedData> data);
 };
 
 

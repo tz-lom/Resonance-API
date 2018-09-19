@@ -4,7 +4,7 @@ using namespace Resonance;
 
 #ifdef __APPLE__
 #include <mach/mach_time.h>
-quint64 RTC::now()
+RTC::TimestampType RTC::now()
 {
     auto now = mach_absolute_time();
 
@@ -18,7 +18,7 @@ quint64 RTC::now()
 
 #elif defined _WIN32 || defined _WIN64
 #include <windows.h>
-quint64 RTC::now()
+RTC::TimestampType RTC::now()
 {
     LARGE_INTEGER time;
     QueryPerformanceCounter(&time);
@@ -29,16 +29,16 @@ quint64 RTC::now()
         QueryPerformanceFrequency(&timeBase); //@todo: change to exception
     }
 
-    return (quint64)time.QuadPart * 1E9 / timeBase.QuadPart;
+    return (RTC::TimestampType)time.QuadPart * 1E9 / timeBase.QuadPart;
 }
 
 #else
 #include <time.h>
-TimestampType RTC::now() // returns NanoSeconds
+RTC::TimestampType RTC::now() // returns NanoSeconds
 {
     struct timespec t;
     ::clock_gettime( CLOCK_REALTIME, &t );
-    return (TimestampType)t.tv_sec*1000000000 + t.tv_nsec;
+    return static_cast<RTC::TimestampType>(t.tv_sec)*1000000000 + static_cast<RTC::TimestampType>(t.tv_nsec);
 }
 
 #endif

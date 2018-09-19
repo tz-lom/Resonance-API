@@ -1,21 +1,20 @@
-#include <stdint.h>
-#include <numeric>
-#include <vector>
-#include <string>
-#include <cstring>
-#include <cassert>
-#include <algorithm>
+#define THIR_NAMESPACE (Resonance)(R3)(Thir)
+#define THIR_EXTENSIONS (Qt)
 
-
-#if defined(QT_VERSION)||defined(COMLIB_EXPORTS)
-#include <QString>
-#include <QVector>
-#include <QByteArray>
-#endif
-
+#include <thir/generate.h>
+#include <thir/classes.h>
+#include <thir/fields/all.h>
 
 #ifdef PROTOCOL_PREBUILD
     #include "protocol.generated.h"
 #else
     #include "protocol.generator.h"
 #endif
+
+namespace Resonance {
+typedef R3::Thir::SD SD;
+typedef R3::Thir::ValueSetter<R3::Thir::__Last, typename R3::Thir::ValueSetter<R3::Thir::__Last, R3::Thir::__Last>::N > LastRecursive;
+
+
+}
+#include <thir/undef.h>

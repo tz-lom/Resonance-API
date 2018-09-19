@@ -31,6 +31,7 @@ public:
 
     void setState(QString state, QJsonValue metaInfo = QJsonValue());
     void setTransitions(QStringList transitions);
+    void setServiceName(QString name);
 
 signals:
     void performTransition(QString name);

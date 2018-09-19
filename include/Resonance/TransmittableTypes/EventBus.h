@@ -12,15 +12,15 @@ namespace Resonance {
 class RESONANCE_API EventBus: public TransmittableType {
 public:
     virtual ~EventBus();
-    R3::SerializedData* asConnectionHeader();
+    SD asConnectionHeader();
 
     quint16 typeId() const;
     static quint16 staticTypeId();
 
-    void updateReceivedTime(R3::SerializedData *data, quint64 now);
-    bool checkConnectionHeader(R3::SerializedData *header);
+    void updateReceivedTime(SD data, quint64 now);
+    bool checkConnectionHeader(SD header);
 
-    static TransmittableType* construct(const R3::SerializedData &header);
+    static TransmittableType* construct(const SD &header);
 
     DataBlock description(QUuid uid, const QVector<OutputStream *> &streams, const QJsonObject &parameters) const;
     DataBlock describeRequest() const;

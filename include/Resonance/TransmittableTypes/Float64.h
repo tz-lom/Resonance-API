@@ -9,14 +9,14 @@ class RESONANCE_API Float64: public TransmittableType {
 public:
     Float64(quint32 channels, double samplingRate);
 
-    R3::SerializedData *asConnectionHeader();
+    SD asConnectionHeader();
 
     quint16 typeId() const;
     static quint16 staticTypeId();
 
-    void updateReceivedTime(R3::SerializedData *data, quint64 now);
-    bool checkConnectionHeader(R3::SerializedData *header);
-    static TransmittableType* construct(const R3::SerializedData &header);
+    void updateReceivedTime(SD data, quint64 now);
+    bool checkConnectionHeader(SD header);
+    static TransmittableType* construct(const SD &header);
 
     DataBlock fromBinary(quint64 time, int samples, double *buffer);
     quint32 channels() const;

@@ -5,7 +5,7 @@ import qbs.ModUtils
 Module {
     Depends { name: "cpp" }
     
-    property bool headersOnly: false
+    property bool standalone: false
     
     property path projectPath
     property path incPath: projectPath?(projectPath+'/include'):FileInfo.path(path+'/../../../include/')
@@ -15,7 +15,8 @@ Module {
 
     cpp.includePaths: [incPath]
     cpp.libraryPaths: [libPath]
-    cpp.dynamicLibraries: headersOnly?[]:['Resonance'];
+    cpp.dynamicLibraries: standalone?[]:['Resonance']
+    cpp.defines: standalone?['RESONANCE_STANDALONE']:[]
 
     setupRunEnvironment: {
         var env;

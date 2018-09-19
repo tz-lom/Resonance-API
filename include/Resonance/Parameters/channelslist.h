@@ -14,8 +14,8 @@ public:
     ChannelsList();
     ChannelsList(QString name, QString group, int index=0);
 
-    bool setJSON(QJsonValue value);
-    QJsonValue JSON();
+    bool setJSON(QJsonValue value) override;
+    QJsonValue JSON() override;
 
     QJsonValue JSONattributes() override;
 

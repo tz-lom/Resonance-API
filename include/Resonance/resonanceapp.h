@@ -18,11 +18,12 @@ class RESONANCE_API ResonanceApp : public QObject
     Q_OBJECT
     Q_PROPERTY(QString serviceName READ serviceName)
 public:
-    explicit ResonanceApp(int &argc, char **argv, QString serviceName);
+    explicit ResonanceApp(int &argc, char **argv, QString serviceName, const QList<QCommandLineOption> &commandLineOptions = QList<QCommandLineOption>(), bool isMain = true);
+    explicit ResonanceApp(int &argc, char **argv, QString serviceName, bool isMain);
     static ResonanceApp* instance();
 
-    void prepare(const QList<QCommandLineOption> &commandLineOptions = QList<QCommandLineOption>());
     const QCommandLineParser* commandLineParser();
+
 
     CommunicationLayer *comLayer() const;
     ServiceDiscovery *serviceDiscovery();
@@ -31,6 +32,8 @@ public:
 
     QString serviceName() const;
     QUuid serviceUid() const;
+
+    void setServiceName(QString name);
 
     quint16 portRangeBegin() const;
     quint16 portRangeEnd() const;

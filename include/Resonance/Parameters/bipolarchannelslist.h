@@ -13,8 +13,8 @@ class RESONANCE_API BipolarChannelsList: public Parameter
 public:
     BipolarChannelsList();
 
-    bool setJSON(QJsonValue value);
-    QJsonValue JSON();
+    bool setJSON(QJsonValue value) override;
+    QJsonValue JSON() override;
 
     QJsonValue JSONattributes() override;
     QStringList channels() const;

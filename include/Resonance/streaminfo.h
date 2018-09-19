@@ -51,7 +51,7 @@ public:
     TransmittableType *type() const;
 
     QByteArray typeSerialized() const;
-    R3::SerializedData* serialized() const;
+    SD serialized() const;
 
     Q_INVOKABLE QJsonObject toJson() const;
 

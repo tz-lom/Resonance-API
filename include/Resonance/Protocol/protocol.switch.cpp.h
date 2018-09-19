@@ -1,16 +1,8 @@
-#include <stdint.h>
-#include <numeric>
-#include <vector>
-#include <string>
-#include <cstring>
-#include <cassert>
-#include <algorithm>
+#include "protocol.switch.h"
 
-#if defined(QT_VERSION)||defined(COMLIB_EXPORTS)
-#include <QString>
-#include <QVector>
-#include <QByteArray>
-#endif
+#include <thir/generate.h>
+
+#include <thir/classes.imp.h>
 
 #ifdef PROTOCOL_PREBUILD
     #include "protocol.generated.cpp.h"

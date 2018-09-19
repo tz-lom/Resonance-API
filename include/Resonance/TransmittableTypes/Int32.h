@@ -11,15 +11,15 @@ class RESONANCE_API Int32: public TransmittableType {
 public:
     Int32(quint32 channels, double samplingRate, double multiplier=1);
     virtual ~Int32();
-    R3::SerializedData *asConnectionHeader();
+    SD asConnectionHeader();
 
     quint16 typeId() const;
     static quint16 staticTypeId();
 
-    void updateReceivedTime(R3::SerializedData *data, quint64 now);
-    bool checkConnectionHeader(R3::SerializedData *header);
+    void updateReceivedTime(SD data, quint64 now);
+    bool checkConnectionHeader(SD header);
 
-    static TransmittableType* construct(const R3::SerializedData &header);
+    static TransmittableType* construct(const SD &header);
 
     //DataBlock from(qint32 *data);
 

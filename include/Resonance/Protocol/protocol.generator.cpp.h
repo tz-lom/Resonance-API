@@ -1,13 +1,15 @@
-#include "protocol.generator.h"
+#include <thir/generate.h>
+#include "protocol_definition.h"
 
-#include "generate.h"
+
 namespace Resonance {
 namespace R3 {
 
-#include "generate_class_implementation.h"
-GENERATE_CLASS_CPP(PROTOCOL_DESCR)
+THIR_GENERATE_IMPLEMENTATION(PROTOCOL_DESCR)
 
 }
 }
 
-#include "generate_undef.h"
+#undef PROTOCOL_DESCR
+
+#include <thir/undef.h>
