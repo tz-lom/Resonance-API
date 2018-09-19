@@ -5,7 +5,9 @@
 #ifdef THIR_EXTENSIONS
 #  undef THIR_EXTENSIONS
 #endif
-#define THIR_EXTENSIONS (Qt)
+#ifndef RESONANCE_STANDALONE
+#  define THIR_EXTENSIONS (Qt)
+#endif
 
 
 #define PROTOCOL_DESCR \

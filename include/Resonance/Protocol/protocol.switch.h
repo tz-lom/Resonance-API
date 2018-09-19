@@ -1,5 +1,7 @@
 #define THIR_NAMESPACE (Resonance)(R3)(Thir)
-#define THIR_EXTENSIONS (Qt)
+#ifndef RESONANCE_STANDALONE
+#  define THIR_EXTENSIONS (Qt)
+#endif
 
 #include <thir/generate.h>
 #include <thir/classes.h>
