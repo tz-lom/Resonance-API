@@ -15,12 +15,13 @@ public:
     Select();
     Select(QString name, QString group, int index=0);
 
-    QVariant value();
+    QVariant value() const;
 
     void setOptions(QStringList options);
     void setOptions(QList< QPair<QString, QVariant> > options);
 
-    QStringList options();
+    QStringList options() const;
+    QList<QPair<QString, QVariant> > optionsWithValues() const;
 
     bool setJSON(QJsonValue value) override;
     QJsonValue JSON() override;
@@ -37,7 +38,7 @@ public slots:
 
 signals:
     void optionsChanged();
-    void valueChanged();
+    void valueChanged(int oldIndex);
 
 private:
     QList<QPair<QString, QVariant> > m_options;

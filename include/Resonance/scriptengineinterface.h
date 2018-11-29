@@ -2,6 +2,7 @@
 #define SCRIPT_ENGINE_INTERFACE
 
 #include <cstddef>
+#include <cstdint>
 
 #if defined(_MSC_VER)
 #  define EXPORT __declspec(dllexport)
@@ -31,9 +32,13 @@ typedef struct {
 typedef struct {
     int (*declareStream)(const char *name, const SerializedDataContainer type);
     bool (*sendBlock)(const int id, const SerializedDataContainer block);
+    void (*startTimer)(const int id, const int timeout, const bool singleShot);
+    void (*stopTimer)(const int id);
 } InterfacePointers;
 
 RESONANCE_SCRIPT_ENGINE_INTERFACE(const char*, engineName, ())
+RESONANCE_SCRIPT_ENGINE_INTERFACE(const char*, engineInitDefault, ())
+RESONANCE_SCRIPT_ENGINE_INTERFACE(const char*, engineCodeDefault, ())
 RESONANCE_SCRIPT_ENGINE_INTERFACE(bool, initializeEngine, (
         InterfacePointers ip,
         const char *code,
@@ -45,6 +50,7 @@ RESONANCE_SCRIPT_ENGINE_INTERFACE(bool, prepareEngine, (
         const SerializedDataContainer* const streams,
         size_t streamCount))
 RESONANCE_SCRIPT_ENGINE_INTERFACE(void, blockReceived, (const int id, const SerializedDataContainer block))
+RESONANCE_SCRIPT_ENGINE_INTERFACE(void, onTimer, (const int id, const uint64_t time))
 RESONANCE_SCRIPT_ENGINE_INTERFACE(void, startEngine, ())
 RESONANCE_SCRIPT_ENGINE_INTERFACE(void, stopEngine, ())
 
