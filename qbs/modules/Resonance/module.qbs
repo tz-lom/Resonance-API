@@ -12,6 +12,7 @@ Module {
     property path libPath: projectPath?(projectPath+'/bin'):FileInfo.path(path+'/../../../bin/')
     
     cpp.minimumOsxVersion: '10.9'
+    cpp.cxxLanguageVersion: "c++11"
 
     cpp.includePaths: [incPath]
     cpp.libraryPaths: [libPath]
